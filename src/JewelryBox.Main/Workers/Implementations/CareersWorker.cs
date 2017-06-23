@@ -21,12 +21,24 @@ namespace JewelryBox.Main.Workers.Implementations
 
         public CareerW GetCareer(string username)
         {
-            username = username.ToLower();
+            if (string.IsNullOrEmpty(username))
+            {
+                throw new ArgumentNullException("A correct username is required!");
+            }
 
-            var career = rep.GetAll().Single(c => c.username == username);
+            username = username.ToLower();
+            var allCareers = rep.GetAll();
+
+            if (!allCareers.Any(u => u.username == username))
+            {
+                throw new ArgumentException("There is no username with this name in the database!");
+            }
+
+            var career = allCareers.Single(c => c.username == username);
 
             var careerW = new CareerW()
             {
+                Id = career.Id,
                 Firstname = career.Firstname,
                 Lastname = career.Lastname,
                 username = career.username,

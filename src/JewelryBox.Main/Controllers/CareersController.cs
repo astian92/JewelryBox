@@ -1,6 +1,5 @@
 ﻿using JewelryBox.Main.Models.Injections;
 using JewelryBox.Main.Models.ViewModels;
-using JewelryBox.Main.Services.Contracts;
 using JewelryBox.Main.Workers.Contracts;
 using System;
 using System.Collections.Generic;
@@ -34,6 +33,7 @@ namespace JewelryBox.Main.Controllers
                 username = username
             };
 
+            //adds prefix to the naming in the view (needed for correct serialization)
             ViewData.TemplateInfo.HtmlFieldPrefix = "message";
 
             return PartialView("Partials/SendMeAMessage", model);

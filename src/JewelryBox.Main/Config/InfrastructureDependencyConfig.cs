@@ -19,9 +19,13 @@ namespace JewelryBox.Main.Config
                 .To<Ticket>()
                 .InTransientScope();
 
+            //kernel.Bind<IDbFactory>()
+            //    .To<JewelsDbFactory>()
+            //    .InTransientScope();
+
             kernel.Bind<IDbFactory>()
-                .To<JewelsDbFactory>()
-                .InTransientScope();
+                .To<JewelsPersistantDbFactory>()
+                .InSingletonScope();
 
             kernel.Bind<IJewelsDbFactory>()
                 .To<JewelsDbFactory>()

@@ -28,6 +28,13 @@
     </div>
 </div>
 
+<div class="container" style="margin-top: 170px;">
+    <form id="asyncForm">
+        <input type="text" name="blogname" class="form-control" />
+        <input type="button" class="btn btn-outline-primary" value="Get BlogPost" onclick="callBlog()" />
+    </form>
+</div>
+
 <div class="blog-sidebar-posts">
     <div class="container">
         <div class="row">
@@ -143,5 +150,26 @@
 
             $(window).scroll(scrollingFn);
         });
+
+        function callBlog() {
+            var form = $('#asyncForm');
+            var data = form.serialize();
+
+            var promise = $.ajax({
+                url: "/Blog/GetBlogItem", 
+                type: "POST", 
+                data: data
+            });
+
+            promise.done(function (result) {
+                if (result.IsOK) {
+                    var container = $(".blog-sidebar-posts .container");
+                    container.prepend(result.ResultData);
+                }
+                else {
+                    alert("There was a problem!");
+                }
+            });
+        }
     </script>
 }

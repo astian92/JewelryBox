@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JewelryBox.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JewelryBox.Main", "src\JewelryBox.Main\JewelryBox.Main.csproj", "{CE973852-3E4D-4D52-B4AA-8DFF3D4FDC2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JewelryBox.Main.Tests", "test\JewelryBox.Main.Tests\JewelryBox.Main.Tests.csproj", "{DF168BBB-C501-4233-8364-C583645080A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{CE973852-3E4D-4D52-B4AA-8DFF3D4FDC2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE973852-3E4D-4D52-B4AA-8DFF3D4FDC2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE973852-3E4D-4D52-B4AA-8DFF3D4FDC2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF168BBB-C501-4233-8364-C583645080A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF168BBB-C501-4233-8364-C583645080A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF168BBB-C501-4233-8364-C583645080A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF168BBB-C501-4233-8364-C583645080A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +38,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EF439BD1-0B6E-4E93-B97A-4592BAE80032} = {73D06D1F-F7EC-490C-9DAA-37BD3FC1CCA7}
 		{CE973852-3E4D-4D52-B4AA-8DFF3D4FDC2B} = {73D06D1F-F7EC-490C-9DAA-37BD3FC1CCA7}
+		{DF168BBB-C501-4233-8364-C583645080A9} = {1FA57276-297A-4256-A9F2-8C14F2D863D1}
 	EndGlobalSection
 EndGlobal
