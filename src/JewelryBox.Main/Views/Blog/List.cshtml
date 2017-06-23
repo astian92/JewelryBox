@@ -1,0 +1,147 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+@Html.Partial("Partials/Navbar")
+
+<div class="clearfix"></div>
+
+<div class="blog-sidebar-header">
+    <div class="container">
+        <h4 class="title hidden-md-up float-left">Blog news</h4>
+        <div class="categories">
+            <a href="#">Articles</a>
+            <a href="#">Product strategy</a>
+            <a href="#">Success stories</a>
+            <a href="#">Design</a>
+            <a href="#">Engineering</a>
+        </div>
+        <div class="search">
+            <form>
+                <input type="text" class="form-control" placeholder="Search the blog...">
+                <a href="#">
+                    <i class="ion-search"></i>
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="blog-sidebar-posts">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="post mt-4">
+                    <a href="blog-post.html" class="pic">
+                        <div style="background-image:url('../../wwwroot/img/photo-1479243396208-be1751535cdb.jpg');"></div>
+                    </a>
+
+                    <div class="title">
+                        <a href="blog-post.html">A brief history of climate science</a>
+                    </div>
+                    <div class="author">
+                        <img src="~/wwwroot/img/bdd.png" class="avatar" alt="author">
+                        Jessica Smith, October 03, 2015
+                    </div>
+                    <p class="intro">
+                        By Ed Hawkins, University of Reading. Climate change is often seen as a recent phenomenon, but its roots are actually far older — the stuff that is currently happening is beyond my understanding.
+                        <br>
+                        Some people say design is about solving problems. Obviously designers solve problems but so do dentists. Design is about cultural invention.
+                    </p>
+                    <a href="blog-post.html" class="continue-reading">Continue reading this post</a>
+                </div>
+            </div>
+            <div class="col-lg-4 sidebar">
+                <h3>Resources</h3>
+                <div class="block">
+                    <div class="title">
+                        Downloads:
+                    </div>
+                    <a href="#" class="website">
+                        http://www.mixpanel.com
+                    </a>
+                    <a href="#" class="website">
+                        http://www.mixpanel.com
+                    </a>
+                </div>
+                <div class="block">
+                    <div class="title">
+                        References:
+                    </div>
+                    <a href="#" class="website">
+                        http://www.mixpanel.com
+                    </a>
+                </div>
+                <div class="block">
+                    <div class="title">
+                        Share this post:
+                    </div>
+                    <a href="#">
+                        <i class="ion-social-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="ion-social-facebook"></i>
+                    </a>
+                    <a href="#">
+                        <i class="ion-social-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pages">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#">← Previous</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next →</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script>
+        $(function () {
+            $(".ion-search").click(function (e) {
+                e.preventDefault();
+
+                $(".search input:text").toggleClass("opened").focus();
+            });
+
+            var $header = $(".blog-sidebar-header"),
+                offset_top = $header.offset().top;
+
+            var scrollingFn = window.utils.debounce(function () {
+                var scroll = $(window).scrollTop();
+
+                if (scroll >= offset_top) {
+                    $header.addClass("sticky");
+                } else {
+                    $header.removeClass("sticky");
+                }
+            }, 10);
+
+            $(window).scroll(scrollingFn);
+        });
+    </script>
+}

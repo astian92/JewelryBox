@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jewelryBoxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CareerInfo">
+    <Key>
+      <PropertyRef Name="CareerId" />
+    </Key>
+    <Property Name="CareerId" Type="Guid" Nullable="false" />
+    <Property Name="AboutMe" Type="String" MaxLength="350" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Facebook" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LinkedIn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Skype" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Career" Relationship="Self.FK_CareerInfo_Careers" FromRole="CareerInfo" ToRole="Careers" />
+  </EntityType>
+  <EntityType Name="Career">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CareerInfo" Relationship="Self.FK_CareerInfo_Careers" FromRole="Careers" ToRole="CareerInfo" />
+    <NavigationProperty Name="Timelines" Relationship="Self.FK_Timeline_Careers" FromRole="Careers" ToRole="Timeline" />
+    <NavigationProperty Name="VisitorMessages" Relationship="Self.FK_VisitorMessages_Careers" FromRole="Careers" ToRole="VisitorMessages" />
+    <NavigationProperty Name="WorkDetails" Relationship="Self.FK_WorkDetails_Careers" FromRole="Careers" ToRole="WorkDetails" />
+  </EntityType>
+  <EntityType Name="Timeline">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="CareerId" Type="Guid" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Event" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Career" Relationship="Self.FK_Timeline_Careers" FromRole="Timeline" ToRole="Careers" />
+  </EntityType>
+  <EntityType Name="VisitorMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="CareerId" Type="Guid" Nullable="false" />
+    <Property Name="SenderName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SenderEmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="350" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Career" Relationship="Self.FK_VisitorMessages_Careers" FromRole="VisitorMessages" ToRole="Careers" />
+  </EntityType>
+  <EntityType Name="WorkDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="CareerId" Type="Guid" Nullable="false" />
+    <Property Name="Header" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Summary" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Career" Relationship="Self.FK_WorkDetails_Careers" FromRole="WorkDetails" ToRole="Careers" />
+    <Property Name="IconClass" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_CareerInfo_Careers">
+    <End Role="Careers" Type="Self.Career" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CareerInfo" Type="Self.CareerInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Careers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CareerInfo">
+        <PropertyRef Name="CareerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Timeline_Careers">
+    <End Role="Careers" Type="Self.Career" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Timeline" Type="Self.Timeline" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Careers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Timeline">
+        <PropertyRef Name="CareerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VisitorMessages_Careers">
+    <End Role="Careers" Type="Self.Career" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VisitorMessages" Type="Self.VisitorMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Careers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VisitorMessages">
+        <PropertyRef Name="CareerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkDetails_Careers">
+    <End Role="Careers" Type="Self.Career" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WorkDetails" Type="Self.WorkDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Careers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkDetails">
+        <PropertyRef Name="CareerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="jewelryBoxContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CareerInfoes" EntityType="Self.CareerInfo" />
+    <EntitySet Name="Careers" EntityType="Self.Career" />
+    <EntitySet Name="Timelines" EntityType="Self.Timeline" />
+    <EntitySet Name="VisitorMessages" EntityType="Self.VisitorMessage" />
+    <EntitySet Name="WorkDetails" EntityType="Self.WorkDetail" />
+    <AssociationSet Name="FK_CareerInfo_Careers" Association="Self.FK_CareerInfo_Careers">
+      <End Role="Careers" EntitySet="Careers" />
+      <End Role="CareerInfo" EntitySet="CareerInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Timeline_Careers" Association="Self.FK_Timeline_Careers">
+      <End Role="Careers" EntitySet="Careers" />
+      <End Role="Timeline" EntitySet="Timelines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VisitorMessages_Careers" Association="Self.FK_VisitorMessages_Careers">
+      <End Role="Careers" EntitySet="Careers" />
+      <End Role="VisitorMessages" EntitySet="VisitorMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkDetails_Careers" Association="Self.FK_WorkDetails_Careers">
+      <End Role="Careers" EntitySet="Careers" />
+      <End Role="WorkDetails" EntitySet="WorkDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,145 @@
+﻿
+body.index-dark-page {
+    background-color: #494949;
+}
+
+.blog-header section {
+    padding-top: 130px;
+}
+
+.blog-header:after {
+    background: none;
+}
+
+.blog-header {
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    /*background-color: #303030;*/
+    background: none;
+}
+
+.navbar-inverse {
+    /*background-color: #303030;*/
+}
+
+.event-schedule {
+    margin-top: 0px;
+}
+
+    .event-schedule .activity {
+        width: inherit;
+    }
+    
+    .event-schedule .activity:before {
+        left: 100px;
+    }
+
+    .event-schedule .activity .time {
+        width: 82px;
+    }
+
+    .event-schedule .activity .title {
+        width: calc(100% - 82px);
+    }
+
+    .event-schedule .activity:after {
+        border-radius: 0px;
+        left: 95px;
+    }
+
+.blog-posts-grid {
+    margin-top: 0px;
+}
+
+.blog-posts-grid .post:first-child {
+    width: 100%;
+}
+
+.blog-posts-grid .post .bg:after {
+    background: none;
+}
+
+@media (min-width: 992px) { 
+    .navbar-brand { 
+        line-height: 75px;
+    }
+}
+
+.navbar-nav { 
+    min-height: 83px;
+}
+
+.blog-sidebar-posts .post .author .avatar {
+    border: 1px solid #9a9a9a;
+    width: 60px;
+    height: 60px;
+}
+
+.blog-sidebar-posts .post .title a {
+    color: white;
+}
+
+.blog-sidebar-posts .post .author {
+    color: #949494;
+}
+
+.blog-sidebar-posts .post .intro { 
+    color: rgb(204, 204, 204);
+}
+
+.blog-sidebar-posts .post .continue-reading {
+    color: #c9d8eb;
+}
+
+.blog-sidebar-header {
+    background-color: #494949;
+    border-bottom: 1px solid #737373;
+}
+
+    .blog-sidebar-header .categories a {
+        color: white;
+    }
+
+.blog-sidebar-posts .sidebar {
+    padding-top: 35px;
+}
+
+    .blog-sidebar-posts .sidebar h3 {
+        color: white;
+        font-size: 20px
+    }
+
+    .blog-sidebar-posts .sidebar .block {
+        margin-top: 25px;
+    }
+
+    .blog-sidebar-posts .sidebar .title {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+        color: white;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .blog-sidebar-posts .sidebar a.website {
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .blog-sidebar-posts .sidebar .ion-social-linkedin {
+        color: #007bb6;
+        font-size: 24px;
+        margin-left: 10px;
+    }
+
+    .blog-sidebar-posts .sidebar .ion-social-facebook {
+        color: #3b5998;
+        font-size: 24px;
+        margin-left: 10px;
+    }
+
+    .blog-sidebar-posts .sidebar .ion-social-twitter {
+        color: #1da1f2;
+        font-size: 21px;
+    }

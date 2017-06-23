@@ -1,0 +1,174 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+@model JewelryBox.Main.Models.Wrappers.CareerW
+
+
+@section styles { 
+    <style>
+        .accent-color {
+            color: @Model.Color;
+        }
+
+        .accent-color-bg {
+            background-color: @Model.Color;
+        }
+
+        .accent-color-border-1 {
+            border: 1px solid @Model.Color;
+        }
+    </style>
+}
+
+@Html.Partial("Partials/Navbar")
+
+<div class="blog-header dark-gray-bg">
+    <hr class="card-hr left accent-color-border-1" />
+    <hr class="card-hr right accent-color-border-1" />
+    <section class="container">
+        <a href="#" class="customFadeInUp">
+            <img src="~/wwwroot/img/@Model.PhotoFileName" class="card-img" />
+            <header>@Model.Firstname @Model.Lastname</header>
+            <span class="customFadeInUp">
+                @Model.Title
+            </span>
+        </a>
+    </section>
+</div>
+
+<section id="aboutme" class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>
+                    About Me
+                </h4>
+                <p>
+                    @(Model.CareerInfo?.AboutMe)
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="event-schedule">
+                    @foreach (var item in Model.Timelines)
+                    {
+                        <div class="activity">
+                            <span class="time">@item.Year</span>
+                            <span class="title">@item.Event</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="mywork" class="content grid-features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>
+                    What I do
+                </h4>
+            </div>
+        </div>
+        <section class="features mt-4">
+            <div class="row">
+                @foreach (var item in Model.WorkDetails)
+                {
+                    <div class="col-md-6 feature">
+                        <i class="fa @item.IconClass fa-3x accent-color"></i>
+                        <section>
+                            <h4>
+                                @item.Header
+                            </h4>
+                            <p>
+                                @item.Summary
+                            </p>
+                        </section>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+</section>
+
+<section class="content blog-posts-grid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>
+                    Latest blog posts
+                </h4>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-7">
+                <div class="post">
+                    <div class="bg" style="background-image:url('../../wwwroot/img/photo-1472132858735-6313c7962473.jpg');">
+                    </div>
+                    <a href="#" class="info">
+                        <span class="title">How to get the most out of San Francisco</span>
+                        <span class="date">13 May, 2014</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="post">
+                    <div class="bg" style="background-image:url('../../wwwroot/img/photo-1475483768296-6163e08872a1.jpg');">
+                    </div>
+                    <a href="#" class="info">
+                        <span class="title">How to get the most out of San Francisco</span>
+                        <span class="date">13 May, 2014</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacts" class="content dark-gray-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Contacts</h4>
+                <ul class="contacts-menu">
+                    <li>
+                        <a href="@Model.CareerInfo.Facebook" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Model.CareerInfo.LinkedIn" target="_blank">
+                            <i class="fa fa-linkedin"></i>
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto://@Model.CareerInfo.Email">
+                            <i class="fa fa-envelope"></i>
+                            @Model.CareerInfo.Email
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-phone"></i>
+                            @Model.CareerInfo.Phone
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-skype"></i>
+                            @Model.CareerInfo.Skype
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                @(Html.Action<CareersController>(c => c.PersonalMessage(Model.username)))
+            </div>
+        </div>
+    </div>
+</section>

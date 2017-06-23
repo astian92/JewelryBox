@@ -1,0 +1,10 @@
+D:\Projects\gems\JewelryBox\src\JewelryBox.Infrastructure\bin\Debug\JewelryBox.Infrastructure.dll
+D:\Projects\gems\JewelryBox\src\JewelryBox.Infrastructure\bin\Debug\JewelryBox.Infrastructure.pdb
+D:\Projects\gems\JewelryBox\src\JewelryBox.Infrastructure\obj\Debug\JewelryBox.Infrastructure.csprojResolveAssemblyReference.cache
+D:\Projects\gems\JewelryBox\src\JewelryBox.Infrastructure\obj\Debug\JewelryBox.Infrastructure.dll
+D:\Projects\gems\JewelryBox\src\JewelryBox.Infrastructure\obj\Debug\JewelryBox.Infrastructure.pdb
+D:\Projects\gems\JewelryBox\src\JewelryBox.Infrastructure\bin\Debug\JewelryBox.Infrastructure.dll.config
+D:\Projects\gems\JewelryBox\src\JewelryBox.Infrastructure\bin\Debug\EntityFramework.dll
+D:\Projects\gems\JewelryBox\src\JewelryBox.Infrastructure\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\gems\JewelryBox\src\JewelryBox.Infrastructure\bin\Debug\EntityFramework.xml
+D:\Projects\gems\JewelryBox\src\JewelryBox.Infrastructure\bin\Debug\EntityFramework.SqlServer.xml

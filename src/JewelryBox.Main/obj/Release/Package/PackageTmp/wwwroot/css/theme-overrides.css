@@ -1,0 +1,58 @@
+﻿
+body.index-dark-page {
+    background-color: #494949;
+}
+
+.blog-header section {
+    padding-top: 130px;
+}
+
+.blog-header:after {
+    background: none;
+}
+
+.blog-header {
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    /*background-color: #303030;*/
+}
+
+.navbar-inverse {
+    /*background-color: #303030;*/
+}
+
+.event-schedule {
+    margin-top: 0px;
+}
+
+    .event-schedule .activity {
+        width: inherit;
+    }
+    
+    .event-schedule .activity:before {
+        left: 100px;
+    }
+
+    .event-schedule .activity .time {
+        width: 82px;
+    }
+
+    .event-schedule .activity .title {
+        width: calc(100% - 82px);
+    }
+
+    .event-schedule .activity:after {
+        border-radius: 0px;
+        left: 95px;
+    }
+
+.blog-posts-grid {
+    margin-top: 0px;
+}
+
+.blog-posts-grid .post:first-child {
+    width: 100%;
+}
+
+.blog-posts-grid .post .bg:after {
+    background: none;
+}

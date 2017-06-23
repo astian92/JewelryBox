@@ -1,0 +1,32 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>gemsolutions</title>
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/wwwroot/theme/css/theme.min.css" rel="stylesheet" />
+    <link href="~/wwwroot/css/theme-overrides.css" rel="stylesheet" />
+    <link href="~/wwwroot/css/jewelry.css" rel="stylesheet" />
+
+    @RenderSection("styles", required: false)
+</head>
+<body class="index-dark-page">
+    @Html.Partial("_Navbar")
+
+    @RenderBody()
+
+    <script src="~/wwwroot/lib/jquery/js/jquery-3.1.1.min.js"></script>
+    <script src="~/wwwroot/lib/jquery.validation/jquery.validate.min.js"></script>
+    <script src="~/wwwroot/lib/jquery.validation/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/wwwroot/lib/tether/js/tether.min.js"></script>
+    <script src="~/wwwroot/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/wwwroot/theme/js/theme.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

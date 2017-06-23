@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jewelryBoxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CareerInfo">
+    <Key>
+      <PropertyRef Name="CareerId" />
+    </Key>
+    <Property Name="CareerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AboutMe" Type="nvarchar" MaxLength="350" Nullable="false" />
+    <Property Name="Facebook" Type="nvarchar" MaxLength="200" />
+    <Property Name="LinkedIn" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="200" />
+    <Property Name="Skype" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Careers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PhotoFileName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Color" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Timeline">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CareerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Event" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VisitorMessages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CareerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SenderName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="SenderEmailAddress" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="350" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CareerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Header" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Summary" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="IconClass" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CareerInfo_Careers">
+    <End Role="Careers" Type="Self.Careers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CareerInfo" Type="Self.CareerInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Careers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CareerInfo">
+        <PropertyRef Name="CareerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Timeline_Careers">
+    <End Role="Careers" Type="Self.Careers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Timeline" Type="Self.Timeline" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Careers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Timeline">
+        <PropertyRef Name="CareerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VisitorMessages_Careers">
+    <End Role="Careers" Type="Self.Careers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VisitorMessages" Type="Self.VisitorMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Careers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VisitorMessages">
+        <PropertyRef Name="CareerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkDetails_Careers">
+    <End Role="Careers" Type="Self.Careers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WorkDetails" Type="Self.WorkDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Careers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkDetails">
+        <PropertyRef Name="CareerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="jewelryBoxModelStoreContainer">
+    <EntitySet Name="CareerInfo" EntityType="Self.CareerInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Careers" EntityType="Self.Careers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Timeline" EntityType="Self.Timeline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VisitorMessages" EntityType="Self.VisitorMessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkDetails" EntityType="Self.WorkDetails" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CareerInfo_Careers" Association="Self.FK_CareerInfo_Careers">
+      <End Role="Careers" EntitySet="Careers" />
+      <End Role="CareerInfo" EntitySet="CareerInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Timeline_Careers" Association="Self.FK_Timeline_Careers">
+      <End Role="Careers" EntitySet="Careers" />
+      <End Role="Timeline" EntitySet="Timeline" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VisitorMessages_Careers" Association="Self.FK_VisitorMessages_Careers">
+      <End Role="Careers" EntitySet="Careers" />
+      <End Role="VisitorMessages" EntitySet="VisitorMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkDetails_Careers" Association="Self.FK_WorkDetails_Careers">
+      <End Role="Careers" EntitySet="Careers" />
+      <End Role="WorkDetails" EntitySet="WorkDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
